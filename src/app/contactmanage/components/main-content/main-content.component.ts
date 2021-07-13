@@ -2,6 +2,8 @@ import { UserService } from './../../services/user.service';
 import { User } from './../../models/user';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-main-content',
@@ -14,8 +16,12 @@ export class MainContentComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private service: UserService) { }
-
+    private service: UserService,
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer) {
+      iconRegistry.addSvgIconSet(sanitizer.bypassSecurityTrustResourceUrl('assets/avatars.svg'));
+    }
+    // ../../../../assets/
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       let id = params['id'];

@@ -20,6 +20,8 @@ export class SidenavComponent implements OnInit {
   isScreemSmall: boolean;
 
   users: Observable<User[]>;
+  isDarkTheme: boolean = false;
+  dir: string = 'ltr';
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -28,10 +30,13 @@ export class SidenavComponent implements OnInit {
 
 
   ngOnInit(): void {
+    /////Comprobar si el tamaño de la pantalla es menor que SMALL_WITH_BREAKPOINT,
+    /////si es menor devuelve un true
     this.breakpointObserver
     .observe([`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
     .subscribe((state: BreakpointState) => {
       this.isScreemSmall = state.matches;
+      console.log(state.matches)
     })
 
     this.users = this.userService.users;
@@ -46,5 +51,9 @@ export class SidenavComponent implements OnInit {
         this.drawer.close();
       }
     })
+  }
+
+  toggleDir(){
+    this.dir = this.dir == 'ltr' ? 'rtl' : 'ltr';
   }
 }

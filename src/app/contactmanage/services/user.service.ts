@@ -23,6 +23,19 @@ export class UserService {
     return this._users.asObservable();
   }
 
+  addUser(user: User): Promise<User> {
+    return new Promise((resolver, reject) => {
+      ///para simular q la bd nos devuelve el id
+      user.id = this.dataStore.users.length + 1;
+      /////////////
+      this.dataStore.users.push(user);
+      //notificar al objeto Observable//
+      this._users.next(Object.assign({}, this.dataStore).users);
+      /////////
+      resolver(user);
+    });
+  }
+
   userById(id: number) {
     return this.dataStore.users.find(x => x.id == id);
   }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'contactmanager' },
@@ -20,9 +21,10 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,  
+    BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

@@ -11,6 +11,8 @@ import { UserService } from './services/user.service';
 import { MaterialModule } from '../shared/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NotesComponent } from './components/notes/notes.component';
+import { NewContactDialogComponent } from './components/new-contact-dialog/new-contact-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,13 +21,16 @@ import { NotesComponent } from './components/notes/notes.component';
     SidenavComponent,
     ToolbarComponent,
     ContactmanagerComponent,
-    NotesComponent
+    NotesComponent,
+    NewContactDialogComponent
   ],
   imports: [
     CommonModule,
     ContactmanageRoutingModule,
     MaterialModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     UserService
